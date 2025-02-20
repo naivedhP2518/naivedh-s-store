@@ -1,0 +1,163 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background: #ffffff;
+    color: rgb(250, 250, 250);
+    padding: 10px 0;
+    text-align: center;
+}
+/* Navigation Bar Styles */
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e1e1e;
+    padding: 15px 0;
+    border-radius: 12px;
+    margin: 20px auto;
+    width: 80%;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar li {
+    display: inline;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+.navbar a:hover, .navbar a.active {
+    background: linear-gradient(to right, #ff0000, #ff4d4d);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Home Section with Background Image */
+#home {
+    background: url('https://lifehacker.com/imagery/articles/01JDPP7VSXQ6CS14YYMRFA31QT/hero-image.fill.size_1248x702.v1732714219.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+#home h2 {
+    font-size: 40px;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgb(0, 0, 0);
+}
+
+#home p {
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgb(0, 0, 0);
+    width: 80%;
+    max-width: 600px;
+}
+
+/* Two Boxes in Services Section */
+#services {
+    background: url('https://lightleader.in/wp-content/uploads/2018/11/contactus-background-768x425.png') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: rgb(240, 240, 240);
+    text-shadow: 2px 2px 5px rgba(20, 65, 229, 0.941);
+}
+
+
+
+#about {
+    background: url('https://cdn.prod.website-files.com/66d70c4963b1d68278bb9da6/66f5b173568b735cc8b0eb08_5%20Advantages%20of%20a%20Custom%20Mobile%20OS-p-1080.png') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white; 
+   
+}
+
+#about h2 {
+    font-size: 40px;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgb(0, 0, 0);
+}
+
+#about p {
+    font-size: 15px;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(20, 124, 229, 0.941);
+    width: 80%;
+    max-width: 600px;
+}
+
+#contact{
+    background: url('https://www.maketecheasier.com/assets/uploads/2022/03/Android-Lock-Screen-Feature-Photo.jpg?width=800&height=400') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: rgb(240, 240, 240);
+    text-shadow: 2px 2px 5px rgba(225, 226, 229, 0.941);
+}
+
+/* Apply Rounded Corners to All Sections */
+#home, #services, #about, #contact {
+    border-radius: 20px; /* Adjust as needed */
+    margin: 20px auto; /* Centering */
+    width: 90%; /* Slightly reduce width for a smooth effect */
+    overflow: hidden; /* Prevents background images from overflowing */
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #525252;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
