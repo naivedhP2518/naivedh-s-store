@@ -1,9 +1,8 @@
-
 .container{ 
     height: 100vh; 
     width: 100%; 
     background: 
-    linear-gradient(45deg, #d2001a, #7462ff,#f48e21,#23d5ab,#23d5ab,#d5c323,#d523a2,#23d52f,#f42121,#e921f4,#21f4b5,#f48e21); 
+    linear-gradient(45deg, #d2001a, #7462ff,#f48e21,#23d5ab,#d5c323,#d523a2,#23d52f,#f42121,#e921f4,#21f4b5,#f48e21); 
     background-size: 300% 300%; 
     animation: color 12s ease-in-out infinite; 
     }
