@@ -5,37 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="custom.css">
-    <style>
-        /* Add some basic styling to our boxes */
-        .box {
-            width: 100px;
-            height: 100px;
-            background-color: #ccc;
-            margin: 10px;
-            display: inline-block;
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="right-scroll-div">
-            <a href="camera.html">
-                <div class="box" style="background-image: url('');"></div>
+    <div class="gradient-background">
+        <div class="gradient-sphere sphere-1"></div>
+        <div class="gradient-sphere sphere-2"></div>
+        <div class="gradient-sphere sphere-3"></div>
+        <div class="glow"></div>
+        <div class="grid-overlay"></div>
+        <div class="noise-overlay"></div>
+        <div class="particles-container" id="particles-container"></div>
+
+        <div class="group">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="search-icon">
+              <g>
+                <path
+                  d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"
+                ></path>
+              </g>
+            </svg>
+          
+            <input
+              id="query"
+              class="input"
+              type="search"
+              placeholder="Search..."
+              name="searchbar"
+            />
+          </div>
+          
+          <div class="radio-container">
+            <input checked="" id="radio-free" name="radio" type="radio" />
+            <label for="radio-free">Profile</label>
+            <input id="radio-basic" name="radio" type="radio" />
+            <label for="radio-basic">Customer Care</label>
+            <input id="radio-premium" name="radio" type="radio" />
+            <label for="radio-premium">Feedback</label>
+          
+            <div class="glider-container">
+              <div class="glider"></div>
+            </div>
+          </div>
+          
+         
+        <div class="cards">
+            <a href="camera.html" class="card">
+                <img src="https://atlas-content-cdn.pixelsquid.com/stock-images/camera-lens-L6lxOW3-600.jpg" alt="Camera">
             </a>
-            <a href="body.html">
-                <div class="box" style="background-image: url('');"></div>
+            <a href="Battry.html" class="card">
+                <img src="https://i0.wp.com/cliktodeal.com/wp-content/uploads/2021/01/iphone-6-battery.jpg?fit=1024%2C1024&ssl=1" alt="Battery">
             </a>
-            <a href="charging.html">
-                <div class="box" style="background-image: url('');"></div>
+            <a href="body.html" class="card">
+                <img src="https://www.zdnet.com/a/img/resize/fc4aa8fcea2e85f1f13b9c61e6ee584f4166b187/2023/08/22/ec44394a-e007-4cb2-9dd6-5a41d0c0e1dd/best-android-phones-zdnet-thumb-image.jpg?auto=webp&fit=crop&height=1200&width=1200" alt="Body">
             </a>
-            <a href="ui.html">
-                <div class="box" style="background-image: url('');"></div>
+            <a href="ui.html" class="card">
+                <img src="https://img.freepik.com/free-vector/gradient-ui-ux-background_23-2149052117.jpg" alt="UI">
             </a>
-            <a href="extra.html">
-                <div class="box" style="background-image: url('');"></div>
+            <a href="version.html" class="card">
+                <img src="https://www.cmcrossroads.com/sites/default/files/article/2016/version-control-lrg.png" alt="Version">
             </a>
         </div>
+
+        <!-- View Cart Button -->
+        <a href="cart.html" class="cartBtn">
+            <svg class="cart" fill="white" viewBox="0 0 576 512" height="1em" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"></path>
+            </svg>
+            VIEW CART
+        </a>
     </div>
     </div>
+
+    <script src="background.js"></script>
 </body>
 </html>
