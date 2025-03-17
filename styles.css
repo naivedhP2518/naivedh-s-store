@@ -281,7 +281,7 @@ button:active {
 
 
 #about p {
-    font-size: 2em;  /* Increased size */
+    font-size: 175%;  /* Increased size */
     max-width: 60%;
     line-height: 1;
 }
