@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Naivedh's Store</title>
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">NAIVEDH'S STORE</div>
+        <div class="dropdown">
+            <span class="dropdown-toggle">Continue Shopping</span>
+            <ul class="dropdown-menu">
+                <li><a href="camera.html">Camera</a></li>
+                <li><a href="Battry.html">Battery</a></li>
+                <li><a href="body.html">Body</a></li>
+                <li><a href="ui.html">UI</a></li>
+                <li><a href="virsion.html">Version</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="cart-container">
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <!-- Cart items will be populated here -->
+            </tbody>
+            <tfoot>
+                <tr class="total-row">
+                    <td colspan="2">Total</td>
+                    <td id="total-price">₹0</td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div class="order-form">
+            <input type="tel" class="form-input" placeholder="Enter Mobile Number" required pattern="[0-9]{10}" title="10 digit mobile number">
+            <button class="order-btn">Place Order</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            function updateCartDisplay() {
+                const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+                const cartTable = document.getElementById('cart-items');
+                let total = 0;
+    
+                cartTable.innerHTML = '';
+    
+                cartItems.forEach((item, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${item.name}</td>
+                        <td>₹${item.price.toLocaleString()}</td>
+                        <td>
+                            <div class="tooltip">
+                                <button onclick="removeItem(${index})">
+                                    ❎
+                                </button>
+                                <span class="tooltiptext">Remove</span>
+                            </div>
+                        </td>
+                    `;
+                    cartTable.appendChild(row);
+                    total += item.price;
+                });
+    
+                document.getElementById('total-price').textContent = `₹${total.toLocaleString()}`;
+            }
+    
+            // Making removeItem function global
+            window.removeItem = function(index) {
+                const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+                cartItems.splice(index, 1);
+                localStorage.setItem('cart', JSON.stringify(cartItems));
+                updateCartDisplay(); // Updates UI immediately after removal
+            };
+    
+            updateCartDisplay();
+    
+            document.querySelector('.dropdown-toggle').addEventListener('click', function () {
+                document.querySelector('.dropdown').classList.toggle('active');
+            });
+        });
+    </script>
+    
+
+</body>
+</html>

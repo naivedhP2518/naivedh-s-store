@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rear Cameras - Naivedh's Store</title>
+    <link rel="stylesheet" href="rear.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">NAIVEDH'S STORE</div>
+        <a href="cart.html" style="text-decoration: none;">
+            <button class="button">
+                <svg viewBox="0 0 16 16" class="bi bi-cart-check" height="24" width="24" xmlns="http://www.w3.org/2000/svg" fill="#fff">
+                    <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"></path>
+                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+                </svg>
+                <p class="text">Go to Cart</p>
+            </button>
+        </a>
+    </nav>
+
+    <div class="container">
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>12MP Dual</h3>
+                    <div class="price">₹1500</div>
+                    <button class="add-to-cart" onclick="addToCart('12MP Dual', 1500)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>48MP Quad</h3>
+                    <div class="price">₹2500</div>
+                    <button class="add-to-cart" onclick="addToCart('48MP Quad', 2500)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>64MP Triple</h3>
+                    <div class="price">₹3000</div>
+                    <button class="add-to-cart" onclick="addToCart('64MP Triple', 3000)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>108MP Penta</h3>
+                    <div class="price">₹4500</div>
+                    <button class="add-to-cart" onclick="addToCart('108MP Penta', 4500)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addToCart(productName, price) {
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            if(cartItems.length >= 4) {
+                alert('Maximum 4 cameras can be added to cart!');
+                return;
+            }
+            
+            cartItems.push({ 
+                name: productName, 
+                price: price,
+                timestamp: new Date().getTime()
+            });
+            
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+            alert('Item added to cart!');
+        }
+    </script>
+</body>
+</html>
