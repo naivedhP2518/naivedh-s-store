@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Front Cameras - Naivedh's Store</title>
+    <title>Front Cameras - Patel's Store</title>
     <link rel="stylesheet" href="front.css">
 </head>
 <body>
@@ -16,15 +16,12 @@
     </div>
 
     <nav class="navbar">
-        <div class="logo">NAIVEDH'S STORE</div>
-        <a href="cart.html" style="text-decoration: none;">
-            <button class="button">
-                <svg viewBox="0 0 16 16" class="bi bi-cart-check" height="24" width="24" xmlns="http://www.w3.org/2000/svg" fill="#fff">
-                    <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"></path>
-                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                </svg>
-                <p class="text">Go to Cart</p>
-            </button>
+        <div class="logo">Patel's Store</div>
+        <a href="cart.html" class="button">
+            <svg viewBox="0 0 16 16" height="24" width="24" xmlns="http://www.w3.org/2000/svg" fill="#000">
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            </svg>
+            View Cart
         </a>
     </nav>
 
@@ -35,42 +32,42 @@
                 <div class="product-info">
                     <h3>8MP</h3>
                     <div class="price">₹600</div>
-                    <button class="add-to-cart" onclick="addToCart('8MP', 600)">Add to Cart</button>
+                    <button class="add-to-cart" onclick="addToCart('8MP Front camera', 600)">Add to Cart</button>
                 </div>
             </div>
             <div class="product-card">
                 <div class="product-info">
                     <h3>10MP</h3>
                     <div class="price">₹1000</div>
-                    <button class="add-to-cart" onclick="addToCart('10MP', 1000)">Add to Cart</button>
+                    <button class="add-to-cart" onclick="addToCart('10MP Front camera', 1000)">Add to Cart</button>
                 </div>
             </div>
             <div class="product-card">
                 <div class="product-info">
                     <h3>16MP</h3>
                     <div class="price">₹1200</div>
-                    <button class="add-to-cart" onclick="addToCart('16MP', 1200)">Add to Cart</button>
+                    <button class="add-to-cart" onclick="addToCart('16MP Front camera', 1200)">Add to Cart</button>
                 </div>
             </div>
             <div class="product-card">
                 <div class="product-info">
                     <h3>20MP</h3>
                     <div class="price">₹1300</div>
-                    <button class="add-to-cart" onclick="addToCart('20MP', 1300)">Add to Cart</button>
+                    <button class="add-to-cart" onclick="addToCart('20MP Front camera', 1300)">Add to Cart</button>
                 </div>
             </div>
             <div class="product-card">
                 <div class="product-info">
                     <h3>32MP</h3>
                     <div class="price">₹1700</div>
-                    <button class="add-to-cart" onclick="addToCart('32MP', 1700)">Add to Cart</button>
+                    <button class="add-to-cart" onclick="addToCart('32MP Front camera', 1700)">Add to Cart</button>
                 </div>
             </div>
             <div class="product-card">
                 <div class="product-info">
                     <h3>40MP</h3>
                     <div class="price">₹2000</div>
-                    <button class="add-to-cart" onclick="addToCart('40MP', 2000)">Add to Cart</button>
+                    <button class="add-to-cart" onclick="addToCart('40MP Front camera', 2000)">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -99,6 +96,20 @@
             localStorage.setItem('cart', JSON.stringify(cartItems));
             alert('Item added to cart!');
         }
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.product-card').forEach(el => {
+            observer.observe(el);
+        });
     </script>
 </body>
 </html>
