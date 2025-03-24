@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Back Body - Patel's Store</title>
+    <style>
+        :root {
+            --primary: #00ff88;
+            --secondary: #1a1a1a;
+            --bg: #000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            color: #fff;
+        }
+
+        .navbar {
+            padding: 1.5rem 5%;
+            background: var(--secondary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(0,255,136,0.1);
+        }
+
+        .logo {
+            color: var(--primary);
+            font-size: 2.5em;
+            text-shadow: 0 0 15px rgba(0,255,136,0.5);
+            animation: logoGlow 2s ease-in-out infinite alternate;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 5%;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: var(--secondary);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: cardEntrance 0.8s ease-out forwards;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, var(--primary), transparent);
+            animation: rotate 6s linear infinite;
+            opacity: 0.1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(0,255,136,0.2);
+        }
+
+        .price {
+            font-size: 1.8em;
+            color: var(--primary);
+            margin: 1rem 0;
+            text-shadow: 0 0 15px rgba(0,255,136,0.3);
+        }
+
+        .add-to-cart {
+            background: var(--primary);
+            color: #000;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .add-to-cart:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0,255,136,0.4);
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: var(--primary);
+            color: #000;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0,255,136,0.4);
+        }
+
+        @keyframes logoGlow {
+            from { text-shadow: 0 0 10px rgba(0,255,136,0.3); }
+            to { text-shadow: 0 0 20px rgba(0,255,136,0.6), 0 0 30px rgba(0,255,136,0.4); }
+        }
+
+        @keyframes cardEntrance {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .product-card:nth-child(1) { animation-delay: 0.2s; }
+        .product-card:nth-child(2) { animation-delay: 0.4s; }
+        .product-card:nth-child(3) { animation-delay: 0.6s; }
+        .product-card:nth-child(4) { animation-delay: 0.8s; }
+
+        .scroll-anim {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .scroll-anim.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Patel's Store</div>
+        <a href="cart.html" class="button">
+            <svg viewBox="0 0 16 16" height="24" width="24" xmlns="http://www.w3.org/2000/svg" fill="#000">
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            </svg>
+            View Cart
+        </a>
+    </nav>
+
+    <div class="container">
+        <div class="products-grid">
+            <div class="product-card scroll-anim">
+                <div class="product-info">
+                    <h3>Plastic Back Cover</h3>
+                    <div class="price">₹800</div>
+                    <button class="add-to-cart" onclick="addToCart('Plastic Back Cover', 800)">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card scroll-anim">
+                <div class="product-info">
+                    <h3>Silicone Shockproof Case</h3>
+                    <div class="price">₹1200</div>
+                    <button class="add-to-cart" onclick="addToCart('Silicone Shockproof Case', 1200)">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card scroll-anim">
+                <div class="product-info">
+                    <h3>Leather Wallet Cover</h3>
+                    <div class="price">₹1500</div>
+                    <button class="add-to-cart" onclick="addToCart('Leather Wallet Cover', 1500)">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card scroll-anim">
+                <div class="product-info">
+                    <h3>Metal Armor Case</h3>
+                    <div class="price">₹2000</div>
+                    <button class="add-to-cart" onclick="addToCart('Metal Armor Case', 2000)">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card scroll-anim">
+                <div class="product-info">
+                    <h3>Transparent Gel Case</h3>
+                    <div class="price">₹600</div>
+                    <button class="add-to-cart" onclick="addToCart('Transparent Gel Case', 600)">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card scroll-anim">
+                <div class="product-info">
+                    <h3>Designer Printed Back</h3>
+                    <div class="price">₹999</div>
+                    <button class="add-to-cart" onclick="addToCart('Designer Printed Back', 999)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addToCart(productName, price) {
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            if(cartItems.length >= 4) {
+                alert('Maximum 4 items can be added to cart!');
+                return;
+            }
+            
+            cartItems.push({ 
+                name: productName, 
+                price: price,
+                timestamp: new Date().getTime()
+            });
+            
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+            alert('Item added to cart!');
+        }
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.scroll-anim').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Hover effects
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mouseover', () => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseout', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

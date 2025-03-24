@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attachable Phone Drones</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #000;
+            color: #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #00ff9d;
+            text-align: center;
+            font-size: 2.5em;
+            text-shadow: 0 0 10px rgba(0, 255, 157, 0.5);
+            animation: titleGlow 2s ease-in-out infinite alternate;
+        }
+
+        .product-card {
+            background-color: #1a1a1a;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 15px rgba(0, 255, 157, 0.2);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: cardEntrance 0.8s ease-out forwards;
+        }
+
+        .product-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 25px rgba(0, 255, 157, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .feature-box {
+            background-color: #262626;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            transform: scale(0.95);
+            opacity: 0;
+            animation: featureEntrance 0.5s ease-out forwards;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 255, 157, 0.3);
+            background-color: #303030;
+        }
+
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
+        }
+
+        .specs-table td {
+            padding: 15px;
+            border: 1px solid #333;
+            transition: background-color 0.3s ease;
+        }
+
+        .specs-table tr:hover td {
+            background-color: rgba(0, 255, 157, 0.1);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes cardEntrance {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes featureEntrance {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes titleGlow {
+            from { text-shadow: 0 0 10px rgba(0, 255, 157, 0.5); }
+            to { text-shadow: 0 0 20px rgba(0, 255, 157, 0.8), 0 0 30px rgba(0, 255, 157, 0.6); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .zoom {
+            transform: scale(2);
+            cursor: zoom-out;
+            z-index: 100;
+            position: relative;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            z-index: 99;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <h1>Mobile Phone Attachable Drones</h1>
+        
+        <div class="product-card" style="animation-delay: 0.2s">
+            <h2>PhoneDrone Pro X1</h2>
+            <img src="inndron.jpg" alt="PhoneDrone Pro X1" class="product-image">
+            <p style="opacity: 0; animation: fadeIn 1s ease-out 0.3s forwards">The PhoneDrone Pro X1 transforms your smartphone into a powerful aerial photography platform. Attaches securely to your phone using advanced magnetic locking system.</p>
+            
+            <div class="features">
+                <div class="feature-box" style="animation-delay: 0.4s">
+                    <h3>4K Video Recording</h3>
+                    <p>Capture stunning aerial footage using your phone's camera</p>
+                </div>
+                <div class="feature-box" style="animation-delay: 0.6s">
+                    <h3>30min Flight Time</h3>
+                    <p>Extended battery life with quick-charge capability</p>
+                </div>
+            </div>
+
+                <!-- Remove this technical specifications table -->
+<h2 style="opacity: 0; animation: fadeIn 1s ease-out 0.8s forwards">Technical Specifications</h2>
+<table class="specs-table">
+    <tr>
+        <td>Weight</td>
+        <td>150g (without phone)</td>
+    </tr>
+    <tr>
+        <td>Max Speed</td>
+        <td>45 km/h</td>
+    </tr>
+    <tr>
+        <td>Control Range</td>
+        <td>500 meters</td>
+    </tr>
+    <tr>
+        <td>Battery</td>
+        <td>2500mAh Li-Po</td>
+    </tr>
+    <tr>
+        <td>Charging Time</td>
+        <td>60 minutes</td>
+    </tr>
+    <tr>
+        <td>Max Payload</td>
+        <td>200g</td>
+    </tr>
+</table>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced image zoom with overlay
+        const images = document.querySelectorAll('.product-image');
+        const overlay = document.querySelector('.overlay');
+
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                const isZoomed = img.classList.toggle('zoom');
+                overlay.style.display = isZoomed ? 'block' : 'none';
+            });
+        });
+
+        overlay.addEventListener('click', () => {
+            images.forEach(img => img.classList.remove('zoom'));
+            overlay.style.display = 'none';
+        });
+
+        // Add scroll animations for elements
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.feature-box, .specs-table').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

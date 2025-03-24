@@ -4,12 +4,184 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart - Naivedh's Store</title>
-    <link rel="stylesheet" href="cart.css">
+    <style>
+        :root {
+            --primary: #00ff88;
+            --secondary: #2b2a2a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #2b2a2a;
+            color: white;
+        }
+
+        .navbar {
+            padding: 1.5rem 5%;
+            background: rgba(43, 42, 42, 0.8);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .dropdown {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .dropdown-toggle {
+            cursor: pointer;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: #2b2a2a;
+            border-radius: 5px;
+            transition: all 0.3s;
+            display: block;
+            font-weight: 600;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: rgba(43, 42, 42, 0.9);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+            padding: 10px 0;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        .dropdown.active .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu li {
+            padding: 10px 20px;
+            list-style: none;
+        }
+
+        .dropdown-menu a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .dropdown-menu a:hover {
+            color: var(--primary);
+        }
+
+        .cart-container {
+            padding: 2rem 5%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+
+        .cart-table th, .cart-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .tooltip button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--primary);
+            font-size: 1.2rem;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            background-color: rgba(0,0,0,0.8);
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            font-size: 0.8rem;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+        }
+
+        .order-form {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .form-input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid var(--primary);
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .order-btn {
+            padding: 10px 30px;
+            background: var(--primary);
+            color: #2b2a2a;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .order-btn:hover {
+            background: #00cc6a;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -10px);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
+        }
+    </style>
 </head>
 <body>
-
     <nav class="navbar">
-        <div class="logo">NAIVEDH'S STORE</div>
+        <div class="logo">Patel's Store</div>
         <div class="dropdown">
             <span class="dropdown-toggle">Continue Shopping</span>
             <ul class="dropdown-menu">
@@ -66,8 +238,8 @@
                             <div class="tooltip">
                                 <button onclick="removeItem(${index})">
                                     ❎
+                                    <span class="tooltiptext">Remove</span>
                                 </button>
-                                <span class="tooltiptext">Remove</span>
                             </div>
                         </td>
                     `;
@@ -78,12 +250,11 @@
                 document.getElementById('total-price').textContent = `₹${total.toLocaleString()}`;
             }
     
-            // Making removeItem function global
             window.removeItem = function(index) {
                 const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
                 cartItems.splice(index, 1);
                 localStorage.setItem('cart', JSON.stringify(cartItems));
-                updateCartDisplay(); // Updates UI immediately after removal
+                updateCartDisplay();
             };
     
             updateCartDisplay();
@@ -93,7 +264,5 @@
             });
         });
     </script>
-    
-
 </body>
 </html>

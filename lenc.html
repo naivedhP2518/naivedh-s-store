@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Attachable Lenses</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #000;
+            color: #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #00b4ff;
+            text-align: center;
+            font-size: 2.5em;
+            text-shadow: 0 0 10px rgba(0, 180, 255, 0.5);
+            animation: titleGlow 2s ease-in-out infinite alternate;
+        }
+
+        .product-card {
+            background-color: #1a1a1a;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 15px rgba(0, 180, 255, 0.2);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: cardEntrance 0.8s ease-out forwards;
+        }
+
+        .product-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 25px rgba(0, 180, 255, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .feature-box {
+            background-color: #262626;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            transform: scale(0.95);
+            opacity: 0;
+            animation: featureEntrance 0.5s ease-out forwards;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 180, 255, 0.3);
+            background-color: #303030;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes cardEntrance {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes featureEntrance {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes titleGlow {
+            from { text-shadow: 0 0 10px rgba(0, 180, 255, 0.5); }
+            to { text-shadow: 0 0 20px rgba(0, 180, 255, 0.8), 0 0 30px rgba(0, 180, 255, 0.6); }
+        }
+
+        .zoom {
+            transform: scale(2);
+            cursor: zoom-out;
+            z-index: 100;
+            position: relative;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            z-index: 99;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <h1>Mobile Camera Attachable Lenses</h1>
+        
+        <div class="product-card" style="animation-delay: 0.2s">
+            <h2>ProVision X Lens Kit</h2>
+            <img src="attachcam.webp" alt="Mobile Camera Lens" class="product-image">
+            <p style="opacity: 0; animation: fadeIn 1s ease-out 0.3s forwards">Professional-grade attachable lens system for mobile photography enthusiasts. Magnetic attachment with multi-element glass optics.</p>
+            
+            <div class="features">
+                <div class="feature-box" style="animation-delay: 0.4s">
+                    <h3>4-in-1 Lens System</h3>
+                    <p>Wide-angle, Macro, Telephoto, and Fisheye lenses</p>
+                </div>
+                <div class="feature-box" style="animation-delay: 0.6s">
+                    <h3>Nano Coating</h3>
+                    <p>Anti-reflective and scratch-resistant surface</p>
+                </div>
+                <div class="feature-box" style="animation-delay: 0.8s">
+                    <h3>Universal Compatibility</h3>
+                    <p>Works with all smartphone models</p>
+                </div>
+                <div class="feature-box" style="animation-delay: 1.0s">
+                    <h3>Compact Design</h3>
+                    <p>Pocket-sized carrying case included</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card" style="animation-delay: 0.4s">
+            <h2>Technical Specifications</h2>
+            <div class="features">
+                <div class="feature-box">
+                    <h3>Aperture Range</h3>
+                    <p>f/1.8 - f/16</p>
+                </div>
+                <div class="feature-box">
+                    <h3>Weight</h3>
+                    <p>28g per lens</p>
+                </div>
+                <div class="feature-box">
+                    <h3>Magnification</h3>
+                    <p>Up to 15x optical zoom</p>
+                </div>
+                <div class="feature-box">
+                    <h3>Focus Distance</h3>
+                    <p>2cm minimum (Macro)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Image zoom functionality
+        const images = document.querySelectorAll('.product-image');
+        const overlay = document.querySelector('.overlay');
+
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                const isZoomed = img.classList.toggle('zoom');
+                overlay.style.display = isZoomed ? 'block' : 'none';
+            });
+        });
+
+        overlay.addEventListener('click', () => {
+            images.forEach(img => img.classList.remove('zoom'));
+            overlay.style.display = 'none';
+        });
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.feature-box').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
