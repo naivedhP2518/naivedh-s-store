@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Back Body - Patel's Store</title>
+    <style>
+        :root {
+            --primary: #00ff88;
+            --secondary: #1a1a1a;
+            --bg: #000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            color: #fff;
+        }
+
+        .navbar {
+            padding: 1.5rem 5%;
+            background: var(--secondary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(0,255,136,0.1);
+        }
+
+        .logo {
+            color: var(--primary);
+            font-size: 2.5em;
+            text-shadow: 0 0 15px rgba(0,255,136,0.5);
+            animation: logoGlow 2s ease-in-out infinite alternate;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+        }
+
+        .coming-soon-card {
+            background: var(--secondary);
+            border-radius: 15px;
+            padding: 4rem;
+            text-align: center;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: cardEntrance 0.8s ease-out forwards;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 0 25px rgba(0,255,136,0.1);
+        }
+
+        .coming-soon-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, var(--primary), transparent);
+            animation: rotate 6s linear infinite;
+            opacity: 0.1;
+        }
+
+        .coming-soon-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 40px rgba(0,255,136,0.3);
+        }
+
+        .coming-soon-text {
+            font-size: 2.5em;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px rgba(0,255,136,0.3);
+            animation: textFloat 3s ease-in-out infinite;
+        }
+
+        .status-indicator {
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 10px;
+            animation: pulse 1.5s infinite;
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: var(--primary);
+            color: #000;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0,255,136,0.4);
+        }
+
+        @keyframes logoGlow {
+            from { text-shadow: 0 0 10px rgba(0,255,136,0.3); }
+            to { text-shadow: 0 0 20px rgba(0,255,136,0.6), 0 0 30px rgba(0,255,136,0.4); }
+        }
+
+        @keyframes cardEntrance {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+
+        @keyframes textFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Patel's Store</div>
+        <a href="cart.html" class="button">
+            <svg viewBox="0 0 16 16" height="24" width="24" xmlns="http://www.w3.org/2000/svg" fill="#000">
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            </svg>
+            View Cart
+        </a>
+    </nav>
+
+    <div class="container">
+        <div class="coming-soon-card">
+            <div class="coming-soon-text">
+                <span class="status-indicator"></span>
+                UI will be coming soon - Work in Progress
+                <span class="status-indicator"></span>
+            </div>
+            <p>We're working on something amazing! Stay tuned for our latest collection of mobile premium UI components.</p>
+        </div>
+    </div>
+
+    <script>
+        // Scroll animation trigger
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.coming-soon-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
