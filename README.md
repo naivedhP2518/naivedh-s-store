@@ -1,1 +1,1 @@
-# patel-s-store
+# Patel-s-store
