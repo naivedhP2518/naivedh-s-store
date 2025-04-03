@@ -1,1 +1,1 @@
-# naivedh-s-store
+# patel-s-store
